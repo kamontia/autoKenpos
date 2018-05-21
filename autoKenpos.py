@@ -6,19 +6,17 @@ import random
 from pyvirtualdisplay import Display
 from selenium import webdriver
 
+
 def Init():
-    print("Initialization...")
     global g_pass, g_id, g_max, g_min
-    global display,browser, url, DRIVER_PATH, date, RandNum
-    display = Display(visible=0,size=(800,600))
+    global display, browser, url, DRIVER_PATH, date, RandNum, do_List
+    display = Display(visible=0, size=(800, 600))
     display.start()
-    browser = webdriver.Firefox()
-    #DRIVER_PATH =os.path.join('/home/kamo/autoKenpos/chromedriver') 
-    #print DRIVER_PATH
-    #browser = webdriver.Chrome(DRIVER_PATH)
+    browser = webdriver.Chrome('/usr/local/bin/chromedriver')
     date = datetime.date.today()
     date.strftime('%y-%m-%d')
     date = str(date)
+
 
 def OptParse():
     global usage
@@ -55,15 +53,14 @@ def OptParse():
 
 
 def Login():
-    print("Login...")
     url = "https://www.kenpos.jp/member/login"
     browser.get(url)
     browser.find_element_by_xpath('//*[@id="authKenpos2012_login_id"]').send_keys(g_id)
     browser.find_element_by_xpath('//*[@id="authKenpos2012_password"]').send_keys(g_pass)
     browser.find_element_by_xpath('//*[@id="Center"]/div[3]/div/div[2]/form/button').click()
 
+
 def Steps():
-    print("Stepping...")
     try:
         url = "http://www.kenpos.jp/healthcare/stepCountInput"
         RandNum = random.randint(g_min, g_max)
@@ -76,8 +73,28 @@ def Steps():
     except Exception as e:
         ErrorCatch(e)
 
+
+def Parse():
+    try:
+        url = "http://www.kenpos.jp/healthAction/statusInput"
+        browser.get(url)
+                
+        elements = browser.find_elements_by_class_name('target')
+        elements = browser.find_elements_by_css_selector(".jhover>p")      
+        IDs = browser.find_elements_by_css_selector(".jhover")
+        for element in elements:
+            print(element.text)
+            
+        for id in IDs:
+            print(id.get_attribute("id"))
+            browser.find_element_by_xpath('//*[@id="'+ id.get_attribute("id") +'"]/a[1]/img').click()
+            time.sleep(1)
+
+    except Exception as e:
+         ErrorCatch(e)
+            
+
 def Lifes():
-    print("lifing...")
     try:
         url = "http://www.kenpos.jp/healthAction/statusInput"
         browser.get(url)
@@ -85,13 +102,12 @@ def Lifes():
         time.sleep(1)
         browser.find_element_by_xpath('//*[@id="healthAction_2"]/a[1]/img').click()
         time.sleep(1)
-        browser.find_element_by_xpath('//*[@id="healthAction_59"]/a[1]/img').click()
+        browser.find_element_by_xpath('//*[@id="healthAction_171"]/a[1]/img').click()
         time.sleep(1)
         browser.find_element_by_xpath('//*[@id="healthAction_72"]/a[1]/img').click()
         time.sleep(1)
     except Exception as e:
         ErrorCatch(e)
-
 
 
 def ErrorCatch(e):
@@ -100,14 +116,14 @@ def ErrorCatch(e):
     print("message:{0}".format(e.message))
     print("{0}".format(e))
 
+
 if __name__ == '__main__':
     OptParse()
     Init()
     Login()
+    Parse()
     Steps()
-    Lifes()
+#     Lifes()
     browser.quit()
     display.stop()
-    print("Complete")
-
 
