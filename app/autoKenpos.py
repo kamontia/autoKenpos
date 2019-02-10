@@ -3,7 +3,6 @@ import time
 import datetime
 import sys
 import random
-from pyvirtualdisplay import Display
 from selenium import webdriver
 from configparser import ConfigParser
 
@@ -11,8 +10,6 @@ from configparser import ConfigParser
 def Init():
     global g_pass, g_id, g_max, g_min
     global display, browser, url, DRIVER_PATH, date, RandNum, do_List
-    display = Display(visible=0, size=(800, 600))
-    display.start()
     browser = webdriver.Chrome('/usr/local/bin/chromedriver')
     date = datetime.date.today()
     date.strftime('%y-%m-%d')
@@ -152,4 +149,3 @@ if __name__ == '__main__':
     Steps()
 #     Lifes()
     browser.quit()
-    display.stop()
