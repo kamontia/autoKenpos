@@ -128,8 +128,8 @@ def Lifes():
 
 def ConfigParse():
     parser = ConfigParser(default_section="ACCOUNT")
-    with open("./config.ini") as inp:
-        parser.readfp(inp)
+    with open("./app/config.ini") as inp:
+        parser.read_file(inp)
 
     global g_id, g_pass, g_min, g_max
 
