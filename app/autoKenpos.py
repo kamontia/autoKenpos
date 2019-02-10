@@ -10,7 +10,13 @@ from configparser import ConfigParser
 def Init():
     global g_pass, g_id, g_max, g_min
     global display, browser, url, DRIVER_PATH, date, RandNum, do_List
-    browser = webdriver.Chrome('/usr/local/bin/chromedriver')
+    chromeOptions = webdriver.ChromeOptions()
+    chromeOptions.add_argument('--headless')
+    chromeOptions.add_argument('--no-sandbox')
+    chromeOptions.add_argument('--disable-dev-shm-usage')
+
+    browser = webdriver.Chrome(
+        '/usr/local/bin/chromedriver', chrome_options=chromeOptions)
     date = datetime.date.today()
     date.strftime('%y-%m-%d')
     date = str(date)
