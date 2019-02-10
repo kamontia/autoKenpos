@@ -28,4 +28,4 @@ ENV PYTHONIOENCODING "utf-8"
 
 # Copy
 RUN mkdir -p /root/app
-COPY ./app /root/app
+COPY ["./app","/root/app"]
