@@ -2,7 +2,7 @@ FROM python:3
 MAINTAINER kamontia <"kamontia@gmail.com">
 
 # apt-get
-RUN apt-get update -yq && apt-get install -yq wget zlib1g-dev
+RUN apt-get update -yq && apt-get install -yq wget zlib1g-dev cron
 
 # pip install
 RUN pip install --upgrade pip && pip install selenium
@@ -26,6 +26,15 @@ RUN rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 # Set encoding in Python
 ENV PYTHONIOENCODING "utf-8"
 
+# Update time zone
+# RUN ["apk","--update","add","tzdata"]
+# RUN ["ln","-sf","/usr/share/zoneinfo/Asia/Tokyo","/etc/localtime"]
+ENV TZ=Asia/Tokyo
+
 # Copy
 RUN mkdir -p /root/app
 COPY ["./app","/root/app"]
+
+# Set up crond
+COPY ["./crontab","/var/spool/cron/crontabs/root"]
+RUN ["service","cron","restart"]
