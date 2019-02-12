@@ -1,5 +1,5 @@
 FROM python:3
-MAINTAINER kamontia
+MAINTAINER kamontia <"kamontia@gmail.com">
 
 # apt-get
 RUN apt-get update -yq && apt-get install -yq wget zlib1g-dev
