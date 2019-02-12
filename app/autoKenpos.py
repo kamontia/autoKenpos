@@ -59,12 +59,10 @@ def OptParse():
 def Login():
     url = "https://www.kenpos.jp/member/login"
     browser.get(url)
-    browser.find_element_by_xpath(
-        '//*[@id="authKenpos2012_login_id"]').send_keys(g_id)
-    browser.find_element_by_xpath(
-        '//*[@id="authKenpos2012_password"]').send_keys(g_pass)
-    browser.find_element_by_xpath(
-        '//*[@id="Center"]/div[3]/div/div[2]/form/button').click()
+
+    browser.find_element_by_xpath('//*[@id="authKenpos2012_login_id"]').send_keys(g_id)  # nopep8
+    browser.find_element_by_xpath('//*[@id="authKenpos2012_password"]').send_keys(g_pass)  # nopep8
+    browser.find_element_by_xpath('//*[@id="Center"]/div[3]/div/div[2]/form/button').click()  # nopep8
 
 
 def Steps():
@@ -75,12 +73,9 @@ def Steps():
         RandNum = str(RandNum)
         browser.get(url)
 
-        browser.find_element_by_xpath(
-            '//*[@id="health_step_count_' + date + '_value"]').clear()
-        browser.find_element_by_xpath(
-            '//*[@id="health_step_count_' + date + '_value"]').send_keys(RandNum)
-        browser.find_element_by_xpath(
-            '//*[@id="input-ui-content-01"]/form/div[2]/input').click()
+        browser.find_element_by_xpath('//*[@id="health_step_count_' + date + '_value"]').clear()  # nopep8
+        browser.find_element_by_xpath('//*[@id="health_step_count_' + date + '_value"]').send_keys(RandNum)  # nopep8
+        browser.find_element_by_xpath('//*[@id="input-ui-content-01"]/form/div[2]/input').click()  # nopep8
     except Exception as e:
         ErrorCatch(e)
 
