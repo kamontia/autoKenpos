@@ -1,30 +1,24 @@
 # autoKenpos
 
-An automatic input tool in Kenpos.
-So I call it autoKenpos.
+autoKenpos supports pepup.
 
-Kenpos is a website that manages your helth effors.  
-The URL is as follows.  
-https://www.kenpos.jp
-
-Currently supported functions are as follows:
-- Input step stepCountInput
-- Input life style(Only optin "Can do")
-
-In future, it will support more functions.
-
-## How to use autoKenpos
-Chrome driver and google chrome must apply each other.  
-If don't launch, check versions of them.
-
+## Preparation
+1. Install FireFox
+2. Download geckodriver which supports your FireFox
+3. Install geckodriver
 ```bash
-sudo cp driver/chrome-driver /usr/local/bin
+$ sudo cp geckodriver /usr/local/bin
+$ chmod 755 /usr/local/bin/geckodriver
 ```
 
-You need to install python libraries.
+## Usage
 ```bash
-sudo apt install python python-pip
-sudo apt-get install xvfb
-pip install pyvirtualdisplay selenium
+$ sudo apt-get install xvfb
+$ pip3 install -r requirements.txt
+$ cd app
+$ vim config/config.ini // Set up to fit your account
+$ python3 autoKenpos.py
 ```
-Good luck!!!
+
+## Todo
+1. Set up Docker container environment
