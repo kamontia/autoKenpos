@@ -61,7 +61,6 @@ class autoKenpos(object):
 
         self.browser.get('https://pepup.life/scsk_mileage_campaigns')
 
-        print("---CLICK---")
         # self.browser.find_element_by_xpath(
         #     '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/div[2]/div[2]')
         # print(self.browser.page_source)
@@ -77,6 +76,7 @@ class autoKenpos(object):
         '''
         STEP_XPATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/div[2]/div[2]//*[contains(@class, "kpAgVi")]'
         print("STEP START")
+        random.random()
         while True:
             try:
                 isFound = self.browser.find_element_by_xpath(STEP_XPATH)
@@ -88,7 +88,7 @@ class autoKenpos(object):
                 isFound.find_element_by_xpath(
                     '/html/body/div[4]/div[2]/div[2]/form/input').clear()
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[2]/form/input').send_keys('15700')
+                    '/html/body/div[4]/div[2]/div[2]/form/input').send_keys(random.randint(self.g_min_step, self.g_max_step))
                 isFound.find_element_by_xpath(
                     '/html/body/div[4]/div[2]/div[2]/form/div/button[1]').click()
                 self.browser.implicitly_wait(5)
@@ -96,7 +96,6 @@ class autoKenpos(object):
                 break
 
         SLEEPTIME_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"kpAgVi")]'
-
         while True:
             try:
                 isFound = self.browser.find_element_by_xpath(SLEEPTIME_PATH)
@@ -113,7 +112,6 @@ class autoKenpos(object):
                     '/html/body/div[4]/div[2]/div[2]/form/div/button[1]').click()
                 self.browser.implicitly_wait(5)
             else:
-                print("Not Found")
                 break
 
         SLEEPCHECK_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[4]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"kpAgVi")]'
@@ -181,15 +179,6 @@ class autoKenpos(object):
                 self.browser.implicitly_wait(5)
             else:
                 break
-
-    def Steps(self):
-        pass
-
-    def Parse(self):
-        pass
-
-    def Lifes(self):
-        pass
 
     @pysnooper.snoop()
     def ConfigParse(self):
