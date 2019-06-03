@@ -3,7 +3,6 @@ import time
 import datetime
 import sys
 import random
-from pyvirtualdisplay import Display
 
 from selenium import webdriver
 from configparser import ConfigParser
@@ -99,8 +98,9 @@ class autoKenpos(object):
         SLEEPTIME_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"kpAgVi")]'
 
         while True:
-            SLEEPTIME_RANDOM= random.uniform(self.g_min_sleep,self.g_max_sleep)
-            SLEEPTIME_RANDOM= round(SLEEPTIME_RANDOM,1)
+            SLEEPTIME_RANDOM = random.uniform(
+                self.g_min_sleep, self.g_max_sleep)
+            SLEEPTIME_RANDOM = round(SLEEPTIME_RANDOM, 1)
             try:
                 isFound = self.browser.find_element_by_xpath(SLEEPTIME_PATH)
             except exceptions.NoSuchElementException:
@@ -210,4 +210,4 @@ if __name__ == '__main__':
     kenpos = autoKenpos()
     kenpos.ConfigParse()
     kenpos.Login()
-
+    print("Done")

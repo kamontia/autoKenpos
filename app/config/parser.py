@@ -30,7 +30,8 @@ class Parser(object):
     def parse(self):
         parse = configparser.ConfigParser()
         try:
-            parse.read("./config.ini")
+            print(os.getcwd()+"/config/config.ini")
+            parse.read(os.getcwd()+"/config/config.ini")
         except FileNotFoundError as e:
             print(e)
 
@@ -61,5 +62,5 @@ class Parser(object):
 if __name__ == '__main__':
 
     parser = Parser()
-    parser.parse(parser)
+    parser.parse()
     parser.display()
