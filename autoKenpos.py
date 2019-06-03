@@ -31,16 +31,17 @@ class autoKenpos(object):
         # chromeOptions.add_argument('--headless')
         # chromeOptions.add_argument('--no-sandbox')
         # chromeOptions.add_argument('--disable-dev-shm-usage')
+        # self.browser = webdriver.Chrome(options=chromeOptions)
 
         # browser = webdriver.Chrome(
         # '/usr/local/bin/chromedriver', chrome_options=chromeOptions)
 
         FirefoxOptions = webdriver.FirefoxOptions()
-        # FirefoxOptions.add_argument('--headless')
+        FirefoxOptions.add_argument('--headless')
         FirefoxOptions.add_argument('--no-sandbox')
         FirefoxOptions.add_argument('--disable-dev-shm-usage')
         self.browser = webdriver.Firefox(
-            firefox_options=FirefoxOptions)
+            options=FirefoxOptions)
 
     def __del__(self):
         self.browser.close()
@@ -59,7 +60,7 @@ class autoKenpos(object):
             '//*[@id="user-pass"]').get_attribute('value'))
         self.browser.find_element_by_xpath('//*[@id="new_user"]/div[2]/div[3]/input').click()  # nopep8
 
-        self.browser.get('https://pepup.life/scsk_mileage_campaigns')
+        self.browser.get('https://pepup.life/scsk_mileage_campaigns/')
 
         # self.browser.find_element_by_xpath(
         #     '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/div[2]/div[2]')
@@ -96,7 +97,10 @@ class autoKenpos(object):
                 break
 
         SLEEPTIME_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"kpAgVi")]'
+
         while True:
+            SLEEPTIME_RANDOM= random.uniform(self.g_min_sleep,self.g_max_sleep)
+            SLEEPTIME_RANDOM= round(SLEEPTIME_RANDOM,1)
             try:
                 isFound = self.browser.find_element_by_xpath(SLEEPTIME_PATH)
             except exceptions.NoSuchElementException:
@@ -107,7 +111,7 @@ class autoKenpos(object):
                 isFound.find_element_by_xpath(
                     '/html/body/div[4]/div[2]/div[2]/form/input').clear()
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[2]/form/input').send_keys('6.5')
+                    '/html/body/div[4]/div[2]/div[2]/form/input').send_keys(str(SLEEPTIME_RANDOM))
                 isFound.find_element_by_xpath(
                     '/html/body/div[4]/div[2]/div[2]/form/div/button[1]').click()
                 self.browser.implicitly_wait(5)
@@ -206,3 +210,4 @@ if __name__ == '__main__':
     kenpos = autoKenpos()
     kenpos.ConfigParse()
     kenpos.Login()
+
