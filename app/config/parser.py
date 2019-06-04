@@ -1,6 +1,7 @@
 import configparser
 import sys
 import os
+import glob
 from collections import defaultdict
 
 import pysnooper
@@ -30,8 +31,8 @@ class Parser(object):
     def parse(self):
         parse = configparser.ConfigParser()
         try:
-            print(os.getcwd()+"/config/config.ini")
-            parse.read(os.getcwd()+"/config/config.ini")
+            configPath = glob.glob(os.getcwd() + '/**/*config.ini', recursive=True)
+            parse.read(configPath)
         except FileNotFoundError as e:
             print(e)
 
