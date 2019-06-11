@@ -20,5 +20,16 @@ $ vim config/config.ini // Set up to fit your account
 $ python3 autoKenpos.py
 ```
 
+## My environment
+```bash
+$ geckodriver --version
+geckodriver 0.24.0 ( 2019-01-28)
+
+... skip some message
+
+$ firefox --version
+Mozilla Firefox 67.0.1
+```
+
 ## Todo
 1. Set up Docker container environment
