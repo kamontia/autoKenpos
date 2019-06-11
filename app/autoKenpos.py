@@ -184,6 +184,27 @@ class autoKenpos(object):
             else:
                 break
 
+        PLUS10_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[7]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"kpAgVi")]'
+        while True:
+            try:
+                isFound = self.browser.find_element_by_xpath(PLUS10_PATH)
+            except exceptions.NoSuchElementException:
+                break
+            print(isFound.text)
+            if isFound:
+                isFound.click()
+
+                if not isFound.find_element_by_xpath(
+                        '/html/body/div[4]/div[2]/div[3]/div[1]/label/input').is_selected():
+                    isFound.find_element_by_xpath(
+                        '/html/body/div[4]/div[2]/div[3]/div[1]/label/input').click()
+
+                isFound.find_element_by_xpath(
+                    '/html/body/div[4]/div[2]/div[3]/div[2]/button').click()
+                self.browser.implicitly_wait(5)
+            else:
+                break
+
     @pysnooper.snoop()
     def ConfigParse(self):
         parser = Parser()
