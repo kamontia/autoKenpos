@@ -95,7 +95,7 @@ class autoKenpos(object):
             else:
                 break
 
-        SLEEPTIME_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"kpAgVi")]'
+        SLEEPTIME_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"jwSCmU")]'
 
         while True:
             SLEEPTIME_RANDOM = random.uniform(
