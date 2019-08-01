@@ -59,7 +59,7 @@ class autoKenpos(object):
             '//*[@id="user-pass"]').get_attribute('value'))
         self.browser.find_element_by_xpath('//*[@id="new_user"]/div[2]/div[3]/input').click()  # nopep8
 
-        self.browser.get('https://pepup.life/scsk_mileage_campaigns/')
+        self.browser.get('https://pepup.life/scsk_mileage_campaigns/2019/7')
 
         # self.browser.find_element_by_xpath(
         #     '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/div[2]/div[2]')
@@ -86,16 +86,16 @@ class autoKenpos(object):
             if isFound:
                 isFound.click()
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[2]/form/input').clear()
+                    '/html/body/div[4]/div[3]/div[2]/form/input').clear()
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[2]/form/input').send_keys(random.randint(self.g_min_step, self.g_max_step))
+                    '/html/body/div[4]/div[3]/div[2]/form/input').send_keys(random.randint(self.g_min_step, self.g_max_step))
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[2]/form/div/button[1]').click()
+                    '/html/body/div[4]/div[3]/div[2]/form/div/button[1]').click()
                 self.browser.implicitly_wait(5)
             else:
                 break
 
-        SLEEPTIME_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"kpAgVi")]'
+        SLEEPTIME_PATH = '//*[@id="app"]/div/div/div[2]/div/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]//*[contains(@class,"jwSCmU")]'
 
         while True:
             SLEEPTIME_RANDOM = random.uniform(
@@ -109,11 +109,11 @@ class autoKenpos(object):
             if isFound:
                 isFound.click()
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[2]/form/input').clear()
+                    '/html/body/div[4]/div[3]/div[2]/form/input').clear()
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[2]/form/input').send_keys(str(SLEEPTIME_RANDOM))
+                    '/html/body/div[4]/div[3]/div[2]/form/input').send_keys(str(SLEEPTIME_RANDOM))
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[2]/form/div/button[1]').click()
+                    '/html/body/div[4]/div[3]/div[2]/form/div/button[1]').click()
                 self.browser.implicitly_wait(5)
             else:
                 break
@@ -129,12 +129,12 @@ class autoKenpos(object):
                 isFound.click()
 
                 if not isFound.find_element_by_xpath(
-                        '/html/body/div[4]/div[2]/div[3]/div[1]/label/input').is_selected():
+                        '/html/body/div[4]/div[3]/div[3]/div[1]/label/input').is_selected():
                     isFound.find_element_by_xpath(
-                        '/html/body/div[4]/div[2]/div[3]/div[1]/label/input').click()
+                        '/html/body/div[4]/div[3]/div[3]/div[1]/label/input').click()
 
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[3]/div[2]/button').click()
+                    '/html/body/div[4]/div[3]/div[3]/div[2]/button').click()
                 self.browser.implicitly_wait(5)
             else:
                 break
@@ -150,12 +150,12 @@ class autoKenpos(object):
                 isFound.click()
 
                 if not isFound.find_element_by_xpath(
-                        '/html/body/div[4]/div[2]/div[3]/div[1]/label/input').is_selected():
+                        '/html/body/div[4]/div[3]/div[3]/div[1]/label/input').is_selected():
                     isFound.find_element_by_xpath(
-                        '/html/body/div[4]/div[2]/div[3]/div[1]/label/input').click()
+                        '/html/body/div[4]/div[3]/div[3]/div[1]/label/input').click()
 
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[3]/div[2]/button').click()
+                    '/html/body/div[4]/div[3]/div[3]/div[2]/button').click()
                 self.browser.implicitly_wait(5)
             else:
                 break
@@ -171,7 +171,7 @@ class autoKenpos(object):
                 isFound.click()
 
                 itemsFound = self.browser.find_elements_by_xpath(
-                    '/html/body/div[4]/div[2]/div[3]//input[contains(@class,"bwykYp")]')
+                    '/html/body/div[4]/div[3]/div[3]//input[contains(@class,"bwykYp")]')
 
                 for item in itemsFound:
                     print(item)
@@ -179,7 +179,7 @@ class autoKenpos(object):
                         item.click()
 
                 isFound.find_element_by_xpath(
-                    '/html/body/div[4]/div[2]/div[3]/div[6]/button').click()
+                    '/html/body/div[4]/div[3]/div[3]/div[6]/button').click()
                 self.browser.implicitly_wait(5)
             else:
                 break
