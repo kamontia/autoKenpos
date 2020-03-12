@@ -4,7 +4,7 @@ decorator==4.4.0
 isort==4.3.20
 lazy-object-proxy==1.4.1
 mccabe==0.6.1
-psutil==5.6.2
+psutil==5.6.6
 pylint==2.3.1
 pyte==0.8.0
 selenium==3.141.0
